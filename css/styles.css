@@ -3,7 +3,7 @@
    ========================================== */
 * {
     box-sizing: border-box;
-    margin: 0;
+    margin: 0;  
     padding: 0;
 }
 
@@ -36,8 +36,8 @@ body {
 }
 
 .header-main h1 {
-    font-size: 35px;
-    letter-spacing: 5px;
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    letter-spacing: clamp(2px, 0.5vw, 5px);
     margin-bottom: 15px;
 }
 
@@ -46,7 +46,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
@@ -129,15 +129,13 @@ hr {
    4. ГАЛЕРЕЯ (ФОТО)
    ========================================== */
 .gallery-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
+
 }
 
 .gallery-item {
-    flex: 1;
-    min-width: 250px;
     background: #e0e0e0;
     padding: 15px;
     text-align: center;
@@ -221,6 +219,14 @@ hr {
     border-radius: 10px;
     padding: 15px;
     position: relative;
+}
+
+.top-grid{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 20px;
 }
 
 /* ==========================================
@@ -338,9 +344,9 @@ hr {
     text-align: center;
 }
 
-/* Двоколоночний макет (50% / 50%) */
+
 .form-content {
-    display: flex;
+    display: flex; 
     gap: 40px;
 }
 
@@ -557,7 +563,6 @@ hr {
    ФОРМА ЗВОРОТНОГО ЗВ'ЯЗКУ (.feedback-form)
    ========================================== */
 
-/* Блок форми зі світло-жовтим фоном */
 .feedback-form {
     background-color: #8dd1c9; /* Світло-жовтий колір за макетом */
     padding: 15px 25px 25px 25px;
@@ -575,9 +580,9 @@ hr {
 
 /* Двоколоночний макет через Flexbox */
 .feedback-grid {
-    display: flex;
-    gap: 25px;          /* Відступ між лівою та правою колонкою */
-    align-items: stretch; /* Вирівнює колонки за висотою */
+    display: flex; 
+    gap: 25px;         
+    align-items: stretch; 
 }
 
 /* Ліва колонка */
@@ -658,6 +663,8 @@ hr {
 .social-bar {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 15px;                  /* Відступ між текстом та іконками */
     margin-top: 25px;
     padding: 12px 20px;
@@ -726,4 +733,103 @@ hr {
 .scroll-top-btn:hover {
     background-color: #1565c0; /* Темніший відтінок синього */
     transform: translateY(-3px);/* Легкий зсув вгору при наведенні */
+}
+
+
+
+
+@media (max-width: 1024px) {
+    .container,
+    .header-main {
+        margin: 10px 15px;
+        padding: 15px;
+    }
+
+    .nav-menu{
+        gap: 20px;
+    }
+
+    .form-content{
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cards-block {
+        margin: 0 auto;
+        width: 220px;
+        min-height: 260px;
+    }
+
+    .form-content,
+    .feedback-grid {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-left,
+    .btn-right {
+        justify-content: center;
+    }
+
+    .social-bar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .nav-menu {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 8px;
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 5px;
+    }
+
+    .footer-main {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+
+    .custom-table th,
+    .custom-table td {
+        padding: 5px;
+        font-size: 12px;
+        word-break: break-word;
+    }
+
+    .float-img-left,
+    .float-img-right {
+        float: none;
+        display: block;
+        margin: 0 auto 15px auto;
+        width: 140px;
+        height: 140px;
+    }
+
+    .inline-group {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .scroll-top-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+
 }
